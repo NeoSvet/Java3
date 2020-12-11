@@ -11,6 +11,10 @@ public class Main {
         advString.add("E");
 
         advString.print();
+        System.out.println("Task 1:");
+        advString.change(2, 4);
+        advString.change(1, 3);
+        advString.print();
     }
 
 }

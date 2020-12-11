@@ -28,4 +28,10 @@ public class ArrayAdv<T> {
             System.out.println(item.toString());
         }
     }
+
+    public void change(int a, int b) {
+        T t = data[a];
+        data[a] = data[b];
+        data[b] = t;
+    }
 }
