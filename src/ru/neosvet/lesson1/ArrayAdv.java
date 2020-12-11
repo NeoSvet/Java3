@@ -22,4 +22,10 @@ public class ArrayAdv<T> {
     public T get(int index) {
         return data[index];
     }
+
+    public void print() {
+        for (T item : data) {
+            System.out.println(item.toString());
+        }
+    }
 }
