@@ -1,5 +1,7 @@
 package ru.neosvet.lesson1;
 
+import java.util.ArrayList;
+
 public class ArrayAdv<T> {
     private T[] data;
     private int currentIndex = -1;
@@ -33,5 +35,13 @@ public class ArrayAdv<T> {
         T t = data[a];
         data[a] = data[b];
         data[b] = t;
+    }
+
+    public ArrayList<T> toArrayList() {
+        ArrayList<T> list = new ArrayList<>();
+        for (T item : data) {
+            list.add(item);
+        }
+        return list;
     }
 }

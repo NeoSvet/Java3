@@ -1,5 +1,8 @@
 package ru.neosvet.lesson1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -15,6 +18,12 @@ public class Main {
         advString.change(2, 4);
         advString.change(1, 3);
         advString.print();
+
+        System.out.println("Task 2:");
+        ArrayList<String> list = advString.toArrayList();
+        for (String item : list) {
+            System.out.println(item);
+        }
     }
 
 }
