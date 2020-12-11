@@ -24,4 +24,12 @@ public class Box<F extends IFruit> {
     public boolean compare(Box<?> box) {
         return getTotalWeight() == box.getTotalWeight();
     }
+
+    public F take() {
+        if (content.size() == 0)
+            return null;
+        F item = content.get(0);
+        content.remove(0);
+        return item;
+    }
 }

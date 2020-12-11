@@ -21,5 +21,18 @@ public class Main {
         System.out.println("Total fruits in orange box: " + orangeBox.getSize());
 
         System.out.println("Compare boxes: " + appleBox.compare(orangeBox));
+
+        if (appleBox.getSize() < 2) {
+            System.out.println("Nothing to take");
+            return;
+        }
+        System.out.println("Take half of apple box to new box.");
+        int count_take = appleBox.getSize() / 2;
+        Box<Apple> appleBox2 = new Box<>();
+        for (int i = 0; i < count_take; i++) {
+            appleBox2.put(appleBox.take());
+        }
+        System.out.println("Total fruits in first apple box: " + appleBox.getSize());
+        System.out.println("Total fruits in second apple box: " + appleBox2.getSize());
     }
 }
