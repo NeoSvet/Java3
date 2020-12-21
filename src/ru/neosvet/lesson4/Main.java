@@ -13,5 +13,14 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Mfu mfu = new Mfu();
+        /*  mfu.start();
+        к сожалению, задумка читать команды из консоли
+        и печатать туда же прогресс не оправдала себя,
+        т.к. не получается ввести команду целиком */
+        mfu.print(10);
+        mfu.scan(30);
+        mfu.print(10);
     }
 }
