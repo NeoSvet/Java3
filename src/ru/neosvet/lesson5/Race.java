@@ -8,7 +8,7 @@ import java.util.concurrent.CyclicBarrier;
 public class Race {
     private ArrayList<Stage> stages;
     private int parties;
-    private CyclicBarrier starter;
+    private CyclicBarrier starter, finisher;
 
     public ArrayList<Stage> getStages() {
         return stages;
@@ -23,10 +23,21 @@ public class Race {
         starter = new CyclicBarrier(parties, () -> {
             System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
         });
+        finisher = new CyclicBarrier(parties, () -> {
+            System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
+        });
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
     }
 
     public void checkReady() throws BrokenBarrierException, InterruptedException {
         starter.await();
+    }
+
+    public void finish() {
+        try {
+            finisher.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
