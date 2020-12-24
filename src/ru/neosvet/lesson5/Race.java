@@ -7,21 +7,19 @@ import java.util.concurrent.CyclicBarrier;
 
 public class Race {
     private ArrayList<Stage> stages;
-    private int count_parties;
     private CyclicBarrier starter, finisher;
 
-    public Race(Stage... stages) {
+    public Race(int count_parties, Stage... stages) {
         this.stages = new ArrayList<>(Arrays.asList(stages));
-    }
-
-    public void waitParties(int count) {
-        count_parties = count;
-        starter = new CyclicBarrier(count, () -> {
+        starter = new CyclicBarrier(count_parties, () -> {
             System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
         });
-        finisher = new CyclicBarrier(count, () -> {
+        finisher = new CyclicBarrier(count_parties, () -> {
             System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
         });
+    }
+
+    public void preparation() {
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
     }
 
