@@ -10,10 +10,6 @@ public class Race {
     private int count_parties;
     private CyclicBarrier starter, finisher;
 
-    public ArrayList<Stage> getStages() {
-        return stages;
-    }
-
     public Race(Stage... stages) {
         this.stages = new ArrayList<>(Arrays.asList(stages));
     }
@@ -38,6 +34,12 @@ public class Race {
             finisher.await();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void goWith(Car car) {
+        for (int i = 0; i < stages.size(); i++) {
+            stages.get(i).go(car);
         }
     }
 }
