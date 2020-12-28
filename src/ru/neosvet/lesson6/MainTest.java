@@ -32,4 +32,20 @@ public class MainTest {
                 Arguments.arguments(new int[]{4, 3, 1, 7}, new int[]{3, 1, 7})
         );
     }
+
+    @DisplayName("Param Test")
+    @ParameterizedTest
+    @MethodSource("data2")
+    public void paramTestCheckNumbers(int[] m, boolean result) {
+        Assertions.assertEquals(result, Main.checkNumbers(m));
+    }
+
+    static Stream<Arguments> data2() {
+        return Stream.of(
+                Arguments.arguments(new int[]{1, 2, 4, 4}, true),
+                Arguments.arguments(new int[]{1, 2, 3, 5}, true),
+                Arguments.arguments(new int[]{4, 3, 7, 7}, true),
+                Arguments.arguments(new int[]{8, 3, 9, 7}, false)
+        );
+    }
 }
