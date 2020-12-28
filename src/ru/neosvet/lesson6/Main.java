@@ -8,7 +8,7 @@ public class Main {
         System.out.println(Arrays.toString(afterLastFour(a)));
     }
 
-    private static int[] afterLastFour(int[] m) {
+    public static int[] afterLastFour(int[] m) {
         int i;
         for (i = m.length - 1; i > -1; i--) {
             if (m[i] == 4)
