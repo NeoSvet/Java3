@@ -6,6 +6,16 @@ public class Main {
     public static void main(String[] args) {
         int[] a = new int[]{1, 2, 4, 4, 2, 3, 4, 1, 7};
         System.out.println(Arrays.toString(afterLastFour(a)));
+
+        System.out.println("checkNumbers: " + checkNumbers(a));
+    }
+
+    public static boolean checkNumbers(int[] m) {
+        for (int i = 0; i < m.length; i++) {
+            if (m[i] == 1 || m[i] == 4)
+                return true;
+        }
+        return false;
     }
 
     public static int[] afterLastFour(int[] m) {
