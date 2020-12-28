@@ -18,14 +18,14 @@ public class MainTest {
         });
     }
 
-    @DisplayName("Param Test")
+    @DisplayName("Param Test AfterLastFour")
     @ParameterizedTest
-    @MethodSource("data")
+    @MethodSource("dataAfterLastFour")
     public void paramTestAfterLastFour(int[] mIn, int[] mOut) {
         Assertions.assertArrayEquals(mOut, Main.afterLastFour(mIn));
     }
 
-    static Stream<Arguments> data() {
+    static Stream<Arguments> dataAfterLastFour() {
         return Stream.of(
                 Arguments.arguments(new int[]{1, 2, 4, 4, 2, 3, 4, 1, 7}, new int[]{1, 7}),
                 Arguments.arguments(new int[]{1, 2, 3, 4, 5}, new int[]{5}),
@@ -33,14 +33,14 @@ public class MainTest {
         );
     }
 
-    @DisplayName("Param Test")
+    @DisplayName("Param Test CheckNumbers")
     @ParameterizedTest
-    @MethodSource("data2")
+    @MethodSource("dataCheckNumbers")
     public void paramTestCheckNumbers(int[] m, boolean result) {
         Assertions.assertEquals(result, Main.checkNumbers(m));
     }
 
-    static Stream<Arguments> data2() {
+    static Stream<Arguments> dataCheckNumbers() {
         return Stream.of(
                 Arguments.arguments(new int[]{1, 2, 4, 4}, true),
                 Arguments.arguments(new int[]{1, 2, 3, 5}, true),
