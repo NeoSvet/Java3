@@ -1,11 +1,13 @@
 package ru.neosvet.lesson7;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Tester {
     private Class<?> classType;
+    private ITest object;
     private int indexBefore = -1;
     private int indexAfter = -1;
 
@@ -37,10 +39,11 @@ public class Tester {
 
 
     public void start() throws Exception {
-        ITest j = (ITest) classType.newInstance();
+        object = (ITest) classType.newInstance();
         Method[] methods = classType.getMethods();
+
         if (indexBefore > -1)
-            methods[indexBefore].invoke(j);
+            methods[indexBefore].invoke(object);
 
         HashMap<Method, Integer> indexes = new HashMap<>();
         for (int i = 0; i < methods.length; i++) {
@@ -49,11 +52,19 @@ public class Tester {
             }
         }
 
-        for (Map.Entry<Method, Integer> item : indexes.entrySet()) {
-            item.getKey().invoke(j);
-        }
+        indexes.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .forEach(this::invokeIt);
 
         if (indexAfter > -1)
-            methods[indexAfter].invoke(j);
+            methods[indexAfter].invoke(object);
+    }
+
+    private void invokeIt(Map.Entry<Method, Integer> item) {
+        try {
+            item.getKey().invoke(object);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 }
