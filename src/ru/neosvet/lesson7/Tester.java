@@ -1,7 +1,9 @@
 package ru.neosvet.lesson7;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Tester {
@@ -50,9 +52,10 @@ public class Tester {
             }
         }
 
-        Object[] m = indexes.entrySet().stream().sorted(Map.Entry.comparingByValue()).toArray();
-        for (int i = m.length - 1; i > -1; i--) {
-            ((Map.Entry<Method, Integer>)m[i]).getKey().invoke(object);
+        List<Method> m = new ArrayList<>();
+        indexes.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(item -> m.add(item.getKey()));
+        for (int i = m.size() - 1; i > -1; i--) {
+            m.get(i).invoke(object);
         }
 
         if (indexAfter > -1)
